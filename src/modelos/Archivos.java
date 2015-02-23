@@ -44,9 +44,10 @@ public class Archivos {
     public void escribrirArchivo(String ruta,String message){
           try {
               
-              FileWriter fw = new FileWriter(ruta);
+              FileWriter fw = new FileWriter(ruta,true);
               BufferedWriter bw = new BufferedWriter(fw);
               bw.write(message);
+              bw.newLine();
               bw.close();
               fw.close();
           } catch (Exception ex) {
