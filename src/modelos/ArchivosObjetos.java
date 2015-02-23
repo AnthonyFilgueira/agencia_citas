@@ -6,16 +6,13 @@
 
 package modelos;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -57,23 +54,22 @@ public class ArchivosObjetos {
               System.out.println(ex);
           }
     }
-    public void leerArchivo(String ruta) throws IOException{
+    public ArrayList<Persona> leerArchivo(String ruta) throws IOException{
         
         FileInputStream f = new FileInputStream(ruta); 
-        
+        ArrayList<Persona> person = new ArrayList<Persona>();
         try {               
               while (f.available() > 0){
                   ObjectInputStream ois = new ObjectInputStream(f); 
                   Persona p  = (Persona) ois.readObject();
-                   System.out.println("Nombre:"+p.getNombre());
-                   System.out.println("Apellido:"+p.getApellido());
-                   System.out.println("Sexo:"+p.getSexo());
-                   System.out.println("Edad:"+p.getEdad());
+                  person.add(p);
               }              
         } catch (Exception ex) {
             System.out.println(ex);
         }
        f.close();
+       
+       return person;
     }
     
     
