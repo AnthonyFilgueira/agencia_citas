@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author afilgueira
  */
-public class ArchivosObjetos {
+public class ArchivosObjetos<E> {
     
     public void ArchivosObjetos(){
     }
@@ -89,6 +89,29 @@ public class ArchivosObjetos {
        
        return citas;
     }
-    
+     
+    public <E> ArrayList<E> leerArchivo(String ruta) throws IOException{
+        
+        FileInputStream f3 = new FileInputStream(ruta); 
+        ArrayList<E> elementos   =   new ArrayList<>();
+       
+        try {               
+              while (f3.available() > 0){
+                  ObjectInputStream ois = new ObjectInputStream(f3); 
+                  E elemento  = (E) ois.readObject();
+                  elementos.add(elemento);
+                 
+              } 
+              
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }finally{
+          
+            f3.close();
+        }
+       
+       
+       return elementos;
+    }
     
 }
