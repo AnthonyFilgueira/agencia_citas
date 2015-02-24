@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
  * @author afilgueira
  */
 public class ArchivosObjetos {
+    
     public void ArchivosObjetos(){
     }
     
@@ -54,7 +55,7 @@ public class ArchivosObjetos {
               System.out.println(ex);
           }
     }
-    public ArrayList<Persona> leerArchivo(String ruta) throws IOException{
+    public ArrayList<Persona> leerArchivoPersona(String ruta) throws IOException{
         
         FileInputStream f = new FileInputStream(ruta); 
         ArrayList<Persona> person = new ArrayList<Persona>();
@@ -70,6 +71,23 @@ public class ArchivosObjetos {
        f.close();
        
        return person;
+    }
+     public ArrayList<Cita> leerArchivoCita(String ruta) throws IOException{
+        
+        FileInputStream f2 = new FileInputStream(ruta); 
+        ArrayList<Cita> citas = new ArrayList<Cita>();
+        try {               
+              while (f2.available() > 0){
+                  ObjectInputStream ois = new ObjectInputStream(f2); 
+                  Cita cita  = (Cita) ois.readObject();
+                  citas.add(cita);
+              }              
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+       f2.close();
+       
+       return citas;
     }
     
     

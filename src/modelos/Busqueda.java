@@ -32,5 +32,33 @@ public class Busqueda {
         }
        return out; 
     }
-    
+      public ArrayList<Persona> buscarPersonas2(ArrayList<Persona> list, Persona elem){
+       ArrayList<Persona> out = new ArrayList<Persona>();
+        Iterator<Persona> e = list.iterator();
+        while( e.hasNext() ){
+            Persona aux = e.next();
+            
+                    if (aux.getNombre().toLowerCase().contentEquals(elem.getNombre().toLowerCase())|| 
+                            aux.getApellido().toLowerCase().contentEquals(elem.getApellido().toLowerCase())||
+                            aux.getEdad()==elem.getEdad()||
+                            aux.getSexo().toLowerCase().contentEquals(elem.getSexo().toLowerCase())) {
+                        
+                        out.add(aux);
+                    }
+        }
+       return out; 
+    }
+      public ArrayList<Cita> buscarCita(ArrayList<Cita> list, Cita elem){
+       ArrayList<Cita> out = new ArrayList<Cita>();
+        Iterator<Cita> e = list.iterator();
+        while( e.hasNext() ){
+            Cita aux = e.next();
+            
+                    if (aux.getFecha().toLowerCase().contentEquals(elem.getFecha().toLowerCase())) {
+                        
+                        out.add(aux);
+                    }
+        }
+       return out; 
+    }
 }

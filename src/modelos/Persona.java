@@ -55,5 +55,9 @@ public class Persona implements Serializable{
         return sexo;
     }
     
+    @Override
+    public String toString(){
     
+    return "Nombre:"+this.getNombre()+"\nApellido:"+this.getApellido()+"\nEdad"+this.getEdad()+"\nSexo"+this.getSexo()+"";
+    }
 }
