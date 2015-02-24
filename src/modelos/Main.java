@@ -33,22 +33,22 @@ public class Main {
         
         //Bloque para Crear Citas
 //                   ar.crearArchivo("src/citas/citas.obj");
-//                    Persona p = new Persona("anthony","filgueira",26,"M");
-//                   Persona p2 = new Persona("mayerling","aristimuno",25,"F");
+//                    Persona p = new Persona(18828200,"anthony","filgueira",26,"M");
+//                   Persona p2 = new Persona(20887600,"mayerling","aristimuno",25,"F");
 //                    Cita cita = new Cita(p,p2,"orinokia","26/02/2015");
 //                   ar.escribrirArchivo("src/citas/citas.obj",cita);
-            //      ar.escribrirArchivo("src/clientes/clientes.obj",p2);
-            //      ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
+//                  ar.escribrirArchivo("src/clientes/clientes.obj",p2);
+//                  ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
         //Fin Bloque Crear Citas
         
        
- //     Busqueda bs = new Busqueda();
+     Busqueda bs = new Busqueda();
        
 //       System.out.println("Iterando afuera con el  Vector");
 //  
         
 //Creacion de lista de personas
-  //ArrayList<Persona> listado = new ArrayList<Persona>();
+ // ArrayList<Persona> listado = new ArrayList<Persona>();
   //ArrayList<Persona> listado2 = new ArrayList<Persona>();
 
 // Listado General de Personas
@@ -59,23 +59,23 @@ public class Main {
     //Utilidades.imprimirListaPersonas(); 
   
 // Listado de Personas con Preferencias
-   //listado =   bs.buscarPersonas2("src/clientes/clientes.obj", new Persona(0,"","",0,"M"));
-   //Utilidades.imprimirListaPersonas(listado);           
+//   listado =   bs.buscarPersonas2("src/clientes/clientes.obj", new Persona(0,"","",0,"F"));
+//   Utilidades.imprimirListaPersonas(listado);           
  
 //Listado de Citas Con Preferencias
-                //        ArrayList<Cita> listado = new ArrayList<Cita>();
-                //           listado =  bs.buscarCita(ar.leerArchivo("src/citas/citas.obj"), new Cita(null,null,"","26/02/2015"));
-                //               
-                //              Iterator<Cita> e = listado.iterator();
-                //               while( e.hasNext() ){
-                //                   Cita aux = e.next();
-                //                   System.out.println("*******Cita********");
-                //                   System.out.println("Pareja 1\n"+aux.getHombre());
-                //                   System.out.println("Pareja 2\n"+aux.getMujer());
-                //                   System.out.println("Lugar:"+aux.getLugar());
-                //                   System.out.println("Fecha:"+aux.getFecha());
-                //                   System.out.println("*******Fin********");
-                //               }
+                        ArrayList<Cita> listado = new ArrayList<Cita>();
+                           listado =  bs.buscarCita(ar.leerArchivo("src/citas/citas.obj"), new Cita(null,null,"","26/02/2015"));
+                               
+                              Iterator<Cita> e = listado.iterator();
+                               while( e.hasNext() ){
+                                   Cita aux = e.next();
+                                   System.out.println("*******Cita********");
+                                   System.out.println("Pareja 1\n"+aux.getHombre());
+                                   System.out.println("Pareja 2\n"+aux.getMujer());
+                                   System.out.println("Lugar:"+aux.getLugar());
+                                   System.out.println("Fecha:"+aux.getFecha());
+                                   System.out.println("*******Fin********");
+                               }
 //Fin listado de Citas
             
     }        
