@@ -4,8 +4,11 @@
  */
 package modelos;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,17 +35,47 @@ public class Busqueda {
         }
        return out; 
     }
-      public ArrayList<Persona> buscarPersonas2(ArrayList<Persona> list, Persona elem){
+      public ArrayList<Persona> buscarPersonas2(String rutaArchivo, Persona elem){
+        ArrayList<Persona> out = null;
+          try {
+            ArchivosObjetos ao = new ArchivosObjetos();
+            
+            ArrayList<Persona> list = ao.leerArchivo(rutaArchivo);
+            
+             out = new ArrayList<Persona>();
+            
+            Iterator<Persona> e = list.iterator();
+            
+            while( e.hasNext() ){
+                Persona aux = e.next();
+                
+                if (aux.getNombre().toLowerCase().contentEquals(elem.getNombre().toLowerCase())||
+                        aux.getApellido().toLowerCase().contentEquals(elem.getApellido().toLowerCase())||
+                        aux.getEdad()==elem.getEdad()||
+                        aux.getSexo().toLowerCase().contentEquals(elem.getSexo().toLowerCase())) {
+                    
+                    out.add(aux);
+                }
+            }
+           
+            
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return out;
+    }
+       public ArrayList<Persona> actualizarPersona(ArrayList<Persona> list, Persona elem){
        ArrayList<Persona> out = new ArrayList<Persona>();
         Iterator<Persona> e = list.iterator();
         while( e.hasNext() ){
             Persona aux = e.next();
             
-                    if (aux.getNombre().toLowerCase().contentEquals(elem.getNombre().toLowerCase())|| 
-                            aux.getApellido().toLowerCase().contentEquals(elem.getApellido().toLowerCase())||
-                            aux.getEdad()==elem.getEdad()||
-                            aux.getSexo().toLowerCase().contentEquals(elem.getSexo().toLowerCase())) {
+                    if (aux.getCedula()==elem.getCedula()) {
                         
+                        aux.setEdad(elem.getEdad());
+                        
+                        out.add(aux);
+                    }else{
                         out.add(aux);
                     }
         }

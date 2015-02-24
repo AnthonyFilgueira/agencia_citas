@@ -17,13 +17,15 @@ import java.util.Iterator;
 public class Main {
     public static void main(String[] args) throws IOException {
         ArchivosObjetos  ar = new ArchivosObjetos();
+        
+        
         //ArchivosObjetos  ar2 = new ArchivosObjetos();
         
         //Bloque para Crear Clientes
 //                   ar.crearArchivo("src/clientes/clientes.obj");
-//                    Persona p = new Persona("jose","blanca",12,"M");
-//                   Persona p2 = new Persona("maria","soute",13,"F");
-//                    Persona p3 = new Persona("josefina","perez",12,"F");
+//                    Persona p = new Persona(18828200,"anthony","filgueira",12,"M");
+//                   Persona p2 = new Persona(8887392,"diany","mendez",13,"F");
+//                    Persona p3 = new Persona(528551,"nidia","montano",12,"F");
 //                   ar.escribrirArchivo("src/clientes/clientes.obj",p);
 //                  ar.escribrirArchivo("src/clientes/clientes.obj",p2);
 //                  ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
@@ -40,29 +42,27 @@ public class Main {
         //Fin Bloque Crear Citas
         
        
-       Busqueda bs = new Busqueda();
+ //     Busqueda bs = new Busqueda();
        
 //       System.out.println("Iterando afuera con el  Vector");
-//       
+//  
+        
+//Creacion de lista de personas
+  //ArrayList<Persona> listado = new ArrayList<Persona>();
+  //ArrayList<Persona> listado2 = new ArrayList<Persona>();
 
 // Listado General de Personas
-   //       listado = (ArrayList<Persona>) ar.leerArchivo("src/clientes/clientes.obj");
+    //Utilidades.imprimirListaPersonas();
      
-////// Listado de Personas con Preferencias
-      ArrayList<Persona> listado = new ArrayList<Persona>();
-               listado =   bs.buscarPersonas2(ar.leerArchivo("src/clientes/clientes.obj"), new Persona("","",0,"F"));
-               
-              Iterator<Persona> e = listado.iterator();
-               while( e.hasNext() ){
-                   Persona aux = e.next();
-                   System.out.println("Nombre:"+aux.getNombre());
-                   System.out.println("Apellido:"+aux.getApellido());
-                   System.out.println("Sexo:"+aux.getSexo());
-                   System.out.println("Edad:"+aux.getEdad());
-               }
-            
-//Fin listado Personas
-                //Listado de Citas
+//Actualizar Persona
+    //Utilidades.actualizarPersona(new Persona(18828200,"","",26,""));
+    //Utilidades.imprimirListaPersonas(); 
+  
+// Listado de Personas con Preferencias
+   //listado =   bs.buscarPersonas2("src/clientes/clientes.obj", new Persona(0,"","",0,"M"));
+   //Utilidades.imprimirListaPersonas(listado);           
+ 
+//Listado de Citas Con Preferencias
                 //        ArrayList<Cita> listado = new ArrayList<Cita>();
                 //           listado =  bs.buscarCita(ar.leerArchivo("src/citas/citas.obj"), new Cita(null,null,"","26/02/2015"));
                 //               

@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,6 +43,16 @@ public class ArchivosObjetos<E> {
         
     
     } 
+   public void sobreescribirArchivo(String ruta){
+        try {
+            File f = new File(ruta);
+           
+            f.delete();
+            f.createNewFile();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+   }
    
    public void escribrirArchivo(String ruta,Object objeto){
           try {
@@ -48,6 +60,21 @@ public class ArchivosObjetos<E> {
               FileOutputStream fos = new FileOutputStream(ruta, true);
               ObjectOutputStream oos = new ObjectOutputStream(fos);
               oos.writeObject(objeto);
+              oos.close();
+              fos.close();
+              
+          } catch (Exception ex) {
+              System.out.println(ex);
+          }
+    }
+   public void escribrirArchivo(String ruta,ArrayList<E> lista){
+          try {
+              
+              FileOutputStream fos = new FileOutputStream(ruta, true);
+              ObjectOutputStream oos = new ObjectOutputStream(fos);
+              for(E objeto: lista){
+                oos.writeObject(objeto);
+              }
               oos.close();
               fos.close();
               
