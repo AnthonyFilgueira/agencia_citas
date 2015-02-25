@@ -17,6 +17,9 @@ public class VistaAdmin extends javax.swing.JFrame {
      */
     public VistaAdmin() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("AGENCIA DE CITAS");
     }
 
     /**
@@ -102,7 +105,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         pack();
