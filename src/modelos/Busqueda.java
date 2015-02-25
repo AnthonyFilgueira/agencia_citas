@@ -19,7 +19,7 @@ public class Busqueda {
     public void Busqueda(){}
     
     
-    public ArrayList<Persona> buscarPersonas(ArrayList<Persona> list, Persona elem, int opc){
+    public ArrayList<Persona> buscarPersona(ArrayList<Persona> list, Persona elem, int opc){
        ArrayList<Persona> out = new ArrayList<Persona>();
         Iterator<Persona> e = list.iterator();
         while( e.hasNext() ){
@@ -35,7 +35,7 @@ public class Busqueda {
         }
        return out; 
     }
-      public ArrayList<Persona> buscarPersonas2(String rutaArchivo, Persona elem){
+      public ArrayList<Persona> buscarPersonas(String rutaArchivo, Persona elem){
         ArrayList<Persona> out = null;
           try {
             ArchivosObjetos ao = new ArchivosObjetos();
@@ -73,6 +73,11 @@ public class Busqueda {
                     if (aux.getCedula()==elem.getCedula()) {
                         
                         aux.setEdad(elem.getEdad());
+                        aux.setPassword(elem.getPassword());
+                        aux.setEstatura(elem.getEstatura());
+                        aux.setContextura(elem.getContextura());
+                        aux.setColorOjos(elem.getColorOjos());
+                        aux.setColorPiel(elem.getColorPiel());
                         
                         out.add(aux);
                     }else{
@@ -94,4 +99,61 @@ public class Busqueda {
         }
        return out; 
     }
+    
+      public static boolean buscarUsuario(String rutaArchivo,int cedula){
+          ArchivosObjetos ao = new ArchivosObjetos();
+          Persona persona= new Persona(cedula,"","",0,"","",0,"","",""); 
+          boolean encontrado = false;
+          
+            ArrayList<Persona> list = null;
+        try {
+            list = ao.leerArchivo(rutaArchivo);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+            
+            Iterator<Persona> e = list.iterator();
+            
+            while( e.hasNext() ){
+                Persona aux = e.next();
+                    
+                    if (aux.getCedula()==persona.getCedula()) {  
+                       encontrado = true;
+                       break;
+                    }else{
+                        encontrado = false;
+                        
+                    }
+             }
+      
+        return encontrado;
+      }
+      public static boolean buscarUsuario(String rutaArchivo,int cedula,String password){
+          ArchivosObjetos ao = new ArchivosObjetos();
+          Persona persona= new Persona(cedula,"","",0,"","",0,"","",password); 
+          boolean encontrado = false;
+          
+            ArrayList<Persona> list = null;
+        try {
+            list = ao.leerArchivo(rutaArchivo);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+            
+            Iterator<Persona> e = list.iterator();
+            
+            while( e.hasNext() ){
+                Persona aux = e.next();
+                    
+                    if (aux.getCedula()==persona.getCedula() && aux.getPassword().toLowerCase().contentEquals(persona.getPassword().toLowerCase())) {  
+                       encontrado = true;
+                       break;
+                    }else{
+                        encontrado = false;
+                        
+                    }
+             }
+      
+        return encontrado;
+      }  
 }

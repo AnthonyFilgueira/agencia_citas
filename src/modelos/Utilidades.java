@@ -57,8 +57,12 @@ public class Utilidades {
                    System.out.println("Cedula:"+aux.getCedula());
                    System.out.println("Nombre:"+aux.getNombre());
                    System.out.println("Apellido:"+aux.getApellido());
-                   System.out.println("Sexo:"+aux.getSexo());
                    System.out.println("Edad:"+aux.getEdad());
+                   System.out.println("Sexo:"+aux.getSexo());
+                   System.out.println("Contextura:"+aux.getContextura());
+                   System.out.println("Estatura:"+aux.getEstatura());
+                   System.out.println("Piel:"+aux.getColorPiel());
+                   System.out.println("Ojos:"+aux.getColorOjos());
                    System.out.println("***********Fin************");
                }
            
@@ -79,10 +83,22 @@ public class Utilidades {
             System.out.println("Apellido:"+aux.getApellido());
             System.out.println("Sexo:"+aux.getSexo());
             System.out.println("Edad:"+aux.getEdad());
+            System.out.println("Contextura:"+aux.getContextura());
+            System.out.println("Estatura:"+aux.getEstatura());
+            System.out.println("Piel:"+aux.getColorPiel());
+            System.out.println("Ojos:"+aux.getColorOjos());
             System.out.println("***********Fin************");
         }
         
     
+    }
+    
+    public static void crearCita(String rutaArchivo,Persona hombre, Persona mujer, String lugar,String fecha){
+        ArchivosObjetos  ar = new ArchivosObjetos();
+        
+        Cita cita = new Cita(hombre,mujer,lugar,fecha);
+        
+        ar.escribrirArchivo(rutaArchivo, cita);
     }
     
 }
