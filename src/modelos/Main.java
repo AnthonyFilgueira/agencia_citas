@@ -32,19 +32,19 @@ public class Main {
         //Fin Bloque Crear Clientes
         
         //Bloque para Crear Citas
-     
- //                  ar.crearArchivo("src/citas/citas.obj");
-//                    Persona p = new Persona(18828200,"anthony","filgueira",26,"M");
- //                 Persona p2 = new Persona(20887600,"mayerling","aristimuno",25,"F");
+//     
+//                   ar.crearArchivo("src/citas/citas.obj");
+//                    Persona p = new Persona(18828200,"anthony","filgueira",26,"M","flaco",194,"moreno","negros","123");
+ //                 Persona p4 = new Persona(20887600,"mayerling","aristimuno",25,"F","flaco",194,"moreno","negros","123");
 //                     Utilidades.crearCita("src/citas/citas.obj", p, p2, "orinokia", "26/02/2015");
-//                    Cita cita = new Cita(p,p2,"orinokia","26/02/2015");
+                    //Cita cita = new Cita(p,p2,"orinokia","26/02/2015");
 //                  ar.escribrirArchivo("src/citas/citas.obj",cita);
- //                ar.escribrirArchivo("src/clientes/clientes.obj",p2);
-//                  ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
+               //  ar.escribrirArchivo("src/clientes/clientes.obj",p4);
+                  //ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
         //Fin Bloque Crear Citas
         
        
-     Busqueda bs = new Busqueda();
+//     Busqueda bs = new Busqueda();
        
 //       System.out.println("Iterando afuera con el  Vector");
 //  
@@ -54,11 +54,11 @@ public class Main {
   //ArrayList<Persona> listado2 = new ArrayList<Persona>();
 
 // Listado General de Personas
-//    Utilidades.imprimirListaPersonas();
+//  Utilidades.imprimirListaPersonas();
      
 //Actualizar Persona
     //    Utilidades.actualizarPersona(new Persona(18828200,"","",26,""));
-    //    Utilidades.imprimirListaPersonas(); 
+//        Utilidades.imprimirListaPersonas(); 
   
 // Listado de Personas con Preferencias
 //   listado =   bs.buscarPersonas("src/clientes/clientes.obj", new Persona(0,"","",0,"F"));

@@ -113,7 +113,7 @@ public class Persona implements Serializable{
     @Override
     public String toString(){
     
-    return "Cedula: "+this.getCedula()+"\nNombre: "+this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nSexo: "+this.getSexo()+"\nContextura: "+this.getContextura()+"\nEstatura: "+this.getEstatura()+"\nPiel: "+this.getColorPiel()+"Ojos"+this.getColorOjos();
+    return "Cedula: "+this.getCedula()+"\nNombre: "+this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nSexo: "+this.getSexo()+"\nContextura: "+this.getContextura()+"\nEstatura: "+this.getEstatura()+"\nPiel: "+this.getColorPiel()+"\nOjos: "+this.getColorOjos()+"\nPassword: "+this.getPassword();
     }
 
     /**

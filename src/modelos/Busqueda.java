@@ -73,11 +73,11 @@ public class Busqueda {
                     if (aux.getCedula()==elem.getCedula()) {
                         
                         aux.setEdad(elem.getEdad());
-                        aux.setPassword(elem.getPassword());
-                        aux.setEstatura(elem.getEstatura());
                         aux.setContextura(elem.getContextura());
+                        aux.setEstatura(elem.getEstatura());
                         aux.setColorOjos(elem.getColorOjos());
                         aux.setColorPiel(elem.getColorPiel());
+                        aux.setPassword(elem.getPassword());
                         
                         out.add(aux);
                     }else{

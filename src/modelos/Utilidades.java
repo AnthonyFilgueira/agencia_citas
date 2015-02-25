@@ -63,6 +63,7 @@ public class Utilidades {
                    System.out.println("Estatura:"+aux.getEstatura());
                    System.out.println("Piel:"+aux.getColorPiel());
                    System.out.println("Ojos:"+aux.getColorOjos());
+                   System.out.println("Password:"+aux.getPassword());
                    System.out.println("***********Fin************");
                }
            
@@ -86,7 +87,8 @@ public class Utilidades {
             System.out.println("Contextura:"+aux.getContextura());
             System.out.println("Estatura:"+aux.getEstatura());
             System.out.println("Piel:"+aux.getColorPiel());
-            System.out.println("Ojos:"+aux.getColorOjos());
+            System.out.println("Ojos:"+aux.getColorOjos()); 
+            System.out.println("Password:"+aux.getPassword());
             System.out.println("***********Fin************");
         }
         
