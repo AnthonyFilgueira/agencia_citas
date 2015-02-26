@@ -64,6 +64,8 @@ public class Utilidades {
                    System.out.println("Piel:"+aux.getColorPiel());
                    System.out.println("Ojos:"+aux.getColorOjos());
                    System.out.println("Password:"+aux.getPassword());
+                   System.out.println("Tipo:"+aux.getTipo());
+                   System.out.println("Casado:"+aux.isCasado());
                    System.out.println("***********Fin************");
                }
            
@@ -89,6 +91,8 @@ public class Utilidades {
             System.out.println("Piel:"+aux.getColorPiel());
             System.out.println("Ojos:"+aux.getColorOjos()); 
             System.out.println("Password:"+aux.getPassword());
+            System.out.println("Tipo:"+aux.getTipo());
+            System.out.println("Casado:"+aux.isCasado());
             System.out.println("***********Fin************");
         }
         
@@ -101,6 +105,33 @@ public class Utilidades {
         Cita cita = new Cita(hombre,mujer,lugar,fecha);
         
         ar.escribrirArchivo(rutaArchivo, cita);
+    }
+    
+    public static ArrayList<Persona> getListaPersonas(String rutaArchivo){
+         ArchivosObjetos ao = new ArchivosObjetos();
+        ArrayList<Persona> list = null;
+        try {
+            
+            
+           list = ao.leerArchivo(rutaArchivo); 
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    
+        return list;
+    }
+    
+    public void crearCliente(String rutaArchivo,int cedula,String nombre,String apellido,int edad,String sexo,String contextura,float estatura, String colorPiel,String colorOjos,String password,String tipo,boolean casado){
+    
+        Persona p = new Persona(cedula,nombre,apellido,edad,sexo,contextura,estatura,colorPiel,colorOjos,password,tipo,casado);
+        
+        ArchivosObjetos  ao = new ArchivosObjetos();
+        
+        ao.escribrirArchivo(rutaArchivo, p);
+        
+    
     }
     
 }

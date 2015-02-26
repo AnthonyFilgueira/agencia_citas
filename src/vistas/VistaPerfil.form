@@ -43,7 +43,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField2" max="32767" attributes="0"/>
+                      <Component id="jTextField2" pref="130" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>

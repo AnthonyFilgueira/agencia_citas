@@ -35,7 +35,7 @@ public class Busqueda {
         }
        return out; 
     }
-      public ArrayList<Persona> buscarPersonas(String rutaArchivo, Persona elem){
+      public static ArrayList<Persona> buscarPersonas(String rutaArchivo, Persona elem){
         ArrayList<Persona> out = null;
           try {
             ArchivosObjetos ao = new ArchivosObjetos();
@@ -75,8 +75,6 @@ public class Busqueda {
                         aux.setEdad(elem.getEdad());
                         aux.setContextura(elem.getContextura());
                         aux.setEstatura(elem.getEstatura());
-                        aux.setColorOjos(elem.getColorOjos());
-                        aux.setColorPiel(elem.getColorPiel());
                         aux.setPassword(elem.getPassword());
                         
                         out.add(aux);
@@ -102,7 +100,7 @@ public class Busqueda {
     
       public static boolean buscarUsuario(String rutaArchivo,int cedula){
           ArchivosObjetos ao = new ArchivosObjetos();
-          Persona persona= new Persona(cedula,"","",0,"","",0,"","",""); 
+          Persona persona= new Persona(cedula,"","",0,"","",0,"","","","",false); 
           boolean encontrado = false;
           
             ArrayList<Persona> list = null;
@@ -130,7 +128,7 @@ public class Busqueda {
       }
       public static boolean buscarUsuario(String rutaArchivo,int cedula,String password){
           ArchivosObjetos ao = new ArchivosObjetos();
-          Persona persona= new Persona(cedula,"","",0,"","",0,"","",password); 
+          Persona persona= new Persona(cedula,"","",0,"","",0,"","",password,"",false); 
           boolean encontrado = false;
           
             ArrayList<Persona> list = null;
@@ -155,5 +153,28 @@ public class Busqueda {
              }
       
         return encontrado;
-      }  
+      }
+      public static Persona getPersona(String rutaArchivo,int cedula){
+            
+          Persona persona = new Persona(cedula,"","",0,"","",0,"","","","",false); 
+            
+            ArrayList<Persona> list = Utilidades.getListaPersonas(rutaArchivo);
+            
+            Iterator<Persona> e = list.iterator();
+            
+            while( e.hasNext() ){
+                Persona aux = e.next();
+                    
+                    if (aux.getCedula()==persona.getCedula()) {  
+                       return aux;
+                       
+                    }
+                    else{
+                    
+                    }
+                    
+             }
+            return persona;
+    
+      }
 }

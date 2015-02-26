@@ -23,9 +23,9 @@ public class Main {
         
         //Bloque para Crear Clientes
 //                    ar.crearArchivo("src/clientes/clientes.obj");
-//                    Persona p = new Persona(18828200,"anthony","filgueira",26,"M","flaco",194,"moreno","negros","123");
-//                    Persona p2 = new Persona(8887392,"diany","mendez",13,"F","flaco",194,"moreno","negros","123");
-//                    Persona p3 = new Persona(528551,"nidia","montano",12,"F","flaco",194,"moreno","negros","123");
+//                    Persona p = new Persona(18828200,"anthony","filgueira",26,"M","flaco",194,"moreno","negros","123","admin",true);
+//                    Persona p2 = new Persona(8887392,"diany","mendez",13,"F","flaca",194,"moreno","negros","123","cliente",true);
+//                    Persona p3 = new Persona(528551,"nidia","montano",12,"F","flaca",194,"moreno","negros","123","cliente",false);
 //                    ar.escribrirArchivo("src/clientes/clientes.obj",p);
 //                    ar.escribrirArchivo("src/clientes/clientes.obj",p2);
 //                    ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
@@ -48,13 +48,16 @@ public class Main {
        
 //       System.out.println("Iterando afuera con el  Vector");
 //  
-        
+// obtener persona
+       
+ //Busqueda.getPersona("src/clientes/clientes.obj",0);
+         
 //Creacion de lista de personas
  // ArrayList<Persona> listado = new ArrayList<Persona>();
   //ArrayList<Persona> listado2 = new ArrayList<Persona>();
 
-// Listado General de Personas
-//  Utilidades.imprimirListaPersonas();
+// Listado General de Personas//
+ //Utilidades.imprimirListaPersonas();
      
 //Actualizar Persona
     //    Utilidades.actualizarPersona(new Persona(18828200,"","",26,""));
@@ -73,7 +76,7 @@ public class Main {
 //     System.out.println("no encontrado");
 // }
  //Buscar login y password
-// if(Busqueda.buscarUsuario("src/clientes/clientes.obj", 8887392,"12")){
+// if(Busqueda.buscarUsuario("src/clientes/clientes.obj", 8887392,"123")){
 // 
 //     System.out.println("encontrado");
 // 

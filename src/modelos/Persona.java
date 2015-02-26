@@ -23,8 +23,10 @@ public class Persona implements Serializable{
     private String colorPiel;
     private String colorOjos;
     private String password;
+    private String tipo;
+    private boolean casado;
     
-    public Persona(int cedula,String nombre,String apellido,int edad,String sexo,String contextura,float estatura, String colorPiel,String colorOjos,String password){
+  public Persona(int cedula,String nombre,String apellido,int edad,String sexo,String contextura,float estatura, String colorPiel,String colorOjos,String password,String tipo,boolean casado){
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -35,7 +37,8 @@ public class Persona implements Serializable{
         this.colorPiel = colorPiel;
         this.colorOjos = colorOjos;
         this.password = password;
-        
+        this.tipo = tipo;
+        this.casado = casado;
     }
 
     /**
@@ -113,7 +116,7 @@ public class Persona implements Serializable{
     @Override
     public String toString(){
     
-    return "Cedula: "+this.getCedula()+"\nNombre: "+this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nSexo: "+this.getSexo()+"\nContextura: "+this.getContextura()+"\nEstatura: "+this.getEstatura()+"\nPiel: "+this.getColorPiel()+"\nOjos: "+this.getColorOjos()+"\nPassword: "+this.getPassword();
+    return "Cedula: "+this.getCedula()+"\nNombre: "+this.getNombre()+"\nApellido: "+this.getApellido()+"\nEdad: "+this.getEdad()+"\nSexo: "+this.getSexo()+"\nContextura: "+this.getContextura()+"\nEstatura: "+this.getEstatura()+"\nPiel: "+this.getColorPiel()+"\nOjos: "+this.getColorOjos()+"\nPassword: "+this.getPassword()+"\nTipo: "+this.getTipo()+"\nCasado"+this.isCasado();
     }
 
     /**
@@ -184,6 +187,34 @@ public class Persona implements Serializable{
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @return the casado
+     */
+    public boolean isCasado() {
+        return casado;
+    }
+
+    /**
+     * @param casado the casado to set
+     */
+    public void setCasado(boolean casado) {
+        this.casado = casado;
     }
     
 }
