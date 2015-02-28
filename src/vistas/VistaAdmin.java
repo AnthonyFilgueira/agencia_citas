@@ -123,7 +123,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-      VistaHistorialCita vc= new VistaHistorialCita(); 
+      VistaHistorialCita vc= new VistaHistorialCita(2); 
       vc.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 

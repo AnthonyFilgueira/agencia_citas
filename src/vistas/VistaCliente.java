@@ -40,7 +40,7 @@ public class VistaCliente extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jMenu1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jMenu1.setText("Personas");
@@ -106,12 +106,12 @@ public class VistaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        VistaPersona vp= new VistaPersona("cliente");
+    VistaPerfil vp= new VistaPerfil();
         vp.setVisible(true);  // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        VistaHistorialCita vc= new VistaHistorialCita();
+        VistaHistorialCita vc= new VistaHistorialCita(1);
         vc.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 

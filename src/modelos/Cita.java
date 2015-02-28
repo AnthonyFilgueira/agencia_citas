@@ -31,15 +31,15 @@ public class Cita implements Serializable {
     /**
      * @return the hombre
      */
-    public String getHombre() {
-        return hombre.toString();
+    public Persona getHombre() {
+        return hombre;
     }
 
     /**
      * @return the mujer
      */
-    public String getMujer() {
-        return mujer.toString();
+    public Persona getMujer() {
+        return mujer;
     }
 
     /**

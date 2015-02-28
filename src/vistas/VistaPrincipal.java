@@ -13,13 +13,14 @@ import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelos.Busqueda;
+import modelos.Utilidades;
 
 /**
  *
  * @author afilgueira
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
+public static int ced;
     /**
      * Creates new form vistaPrincipal
      */
@@ -45,8 +46,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         cedula = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        iniciarSesion = new javax.swing.JButton();
+        registrarPersona = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,6 +61,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Wide Latin", 0, 10)); // NOI18N
         jLabel2.setText("Password:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
+            }
+        });
         getContentPane().add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 136, -1));
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 136, -1));
 
@@ -66,21 +74,29 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Agencia de Citas");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton1.setText("Iniciar Sesion");
+        iniciarSesion.setText("Iniciar Sesion");
+        iniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarSesionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(iniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 110, -1));
+
+        registrarPersona.setText("Registrarse");
+        registrarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarPersonaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(registrarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 110, -1));
+
+        jButton1.setText("Ayuda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 110, -1));
-
-        jButton2.setText("Registrarse");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 110, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agencia de citas.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -89,21 +105,35 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           
+    private void iniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionActionPerformed
+if(cedula.getText().isEmpty()||password.getText().isEmpty()){
+
+JOptionPane.showMessageDialog(null, "Faltan Campos Por LLennar");
+}  else{         
        if(CtrPersona.iniciarSesion("src/clientes/clientes.obj", Integer.parseInt(cedula.getText()), password.getText())){
-       
+       ced = Integer.parseInt(cedula.getText());
            this.setVisible(false);
        }else{
        JOptionPane.showMessageDialog(null, "Usuario Invalido");
        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+}
+    }//GEN-LAST:event_iniciarSesionActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void registrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPersonaActionPerformed
       VistaPersona vp = new VistaPersona("cliente");
      vp.setVisible(true);
      
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_registrarPersonaActionPerformed
+
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+       
+        Utilidades.validarNumeros(evt,1);
+    }//GEN-LAST:event_cedulaKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       VistaAyuda va = new VistaAyuda();
+       va.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,12 +172,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cedula;
+    private javax.swing.JButton iniciarSesion;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField password;
+    private javax.swing.JButton registrarPersona;
     // End of variables declaration//GEN-END:variables
 }

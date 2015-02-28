@@ -7,6 +7,8 @@
 package vistas;
 
 import controladores.CtrPersona;
+import javax.swing.JOptionPane;
+import modelos.Utilidades;
 
 /**
  *
@@ -21,6 +23,7 @@ public class VistaCita extends javax.swing.JFrame {
     public VistaCita() {
         
         initComponents();
+        setLocationRelativeTo(null);
         panel_tabla.setVisible(false);
            
            
@@ -53,13 +56,17 @@ public class VistaCita extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        pareja = new javax.swing.JTextField();
+        crearCita = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         buscar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        fecha = new javax.swing.JTextField();
+        lugar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -75,8 +82,20 @@ public class VistaCita extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Shruti", 0, 14)); // NOI18N
         jLabel3.setText("Edad:");
 
+        edad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edadKeyTyped(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Shruti", 0, 14)); // NOI18N
         jLabel4.setText("Estatura:");
+
+        estatura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                estaturaKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Shruti", 0, 14)); // NOI18N
         jLabel5.setText("Piel:");
@@ -130,8 +149,8 @@ public class VistaCita extends javax.swing.JFrame {
         panel_tablaLayout.setHorizontalGroup(
             panel_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_tablaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE))
         );
         panel_tablaLayout.setVerticalGroup(
             panel_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,11 +160,17 @@ public class VistaCita extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Harrington", 0, 12)); // NOI18N
-        jButton1.setText("CREAR CITA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pareja.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                parejaKeyTyped(evt);
+            }
+        });
+
+        crearCita.setFont(new java.awt.Font("Harrington", 0, 12)); // NOI18N
+        crearCita.setText("CREAR CITA");
+        crearCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                crearCitaActionPerformed(evt);
             }
         });
 
@@ -163,6 +188,16 @@ public class VistaCita extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setText("Lugar");
+
+        jLabel11.setText("Fecha");
+
+        lugar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                lugarKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -170,15 +205,26 @@ public class VistaCita extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(pareja, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(47, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lugar, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +233,10 @@ public class VistaCita extends javax.swing.JFrame {
                         .addGap(71, 71, 71))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(crearCita)
+                        .addGap(127, 127, 127))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,13 +249,22 @@ public class VistaCita extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pareja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(57, 57, 57)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel10))
+                .addGap(20, 20, 20)
+                .addComponent(crearCita)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout panel_generalLayout = new javax.swing.GroupLayout(panel_general);
@@ -243,14 +301,14 @@ public class VistaCita extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panel_generalLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addGap(40, 40, 40)
                         .addComponent(panel_tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))))
+                        .addGap(0, 49, Short.MAX_VALUE))))
         );
         panel_generalLayout.setVerticalGroup(
             panel_generalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_generalLayout.createSequentialGroup()
-                .addGap(0, 52, Short.MAX_VALUE)
+                .addGap(0, 14, Short.MAX_VALUE)
                 .addGroup(panel_generalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
@@ -279,7 +337,7 @@ public class VistaCita extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel_general, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,12 +432,37 @@ public class VistaCita extends javax.swing.JFrame {
         }
 
         CtrPersona.BuscarPersonas(tabla, panel_tabla, sex,contex,Integer.parseInt(edad.getText()),Float.parseFloat(estatura.getText()),cp,co);
-        //JTable tabla,JPanel panel,String sexo,String contextura,int edad,float estatura,String piel,String ojos)
+       
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void crearCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCitaActionPerformed
+     if(CtrPersona.crearCita("src/clientes/clientes.obj","src/citas/citas.obj",Integer.parseInt(pareja.getText()), lugar.getText(), fecha.getText())){
+     JOptionPane.showMessageDialog(null,"Cita Creada Con Exito");
+     pareja.setText("");
+     lugar.setText("");
+     fecha.setText("");
+     }else{
+     
+     JOptionPane.showMessageDialog(null, "Problema Con su cita");
+     
+     }       
+    }//GEN-LAST:event_crearCitaActionPerformed
+
+    private void edadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edadKeyTyped
+        Utilidades.validarNumeros(evt, 1);
+    }//GEN-LAST:event_edadKeyTyped
+
+    private void estaturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_estaturaKeyTyped
+       Utilidades.validarNumeros(evt, 2);
+    }//GEN-LAST:event_estaturaKeyTyped
+
+    private void parejaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_parejaKeyTyped
+        Utilidades.validarNumeros(evt, 1);
+    }//GEN-LAST:event_parejaKeyTyped
+
+    private void lugarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lugarKeyTyped
+       Utilidades.validarLetras(evt);
+    }//GEN-LAST:event_lugarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -419,10 +502,13 @@ public class VistaCita extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
     private javax.swing.JComboBox contextura;
+    private javax.swing.JButton crearCita;
     private javax.swing.JTextField edad;
     private javax.swing.JTextField estatura;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField fecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -434,10 +520,11 @@ public class VistaCita extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField lugar;
     private javax.swing.JComboBox ojos;
     private javax.swing.JPanel panel_general;
     private javax.swing.JPanel panel_tabla;
+    private javax.swing.JTextField pareja;
     private javax.swing.JComboBox piel;
     private javax.swing.JComboBox sexo;
     private javax.swing.JTable tabla;

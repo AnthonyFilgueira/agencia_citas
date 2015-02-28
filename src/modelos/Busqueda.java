@@ -78,7 +78,7 @@ public class Busqueda {
                         aux.setContextura(elem.getContextura());
                         aux.setEstatura(elem.getEstatura());
                         aux.setPassword(elem.getPassword());
-                        
+                        aux.setCasado(elem.isCasado());
                         out.add(aux);
                     }else{
                         out.add(aux);
@@ -95,6 +95,9 @@ public class Busqueda {
                     if (aux.getFecha().toLowerCase().contentEquals(elem.getFecha().toLowerCase())) {
                         
                         out.add(aux);
+                    }
+                    else{
+                    out.add(aux);
                     }
         }
        return out; 

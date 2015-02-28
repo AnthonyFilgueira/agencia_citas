@@ -15,7 +15,7 @@ import java.util.Iterator;
  * @author afilgueira
  */
 public class Main {
-   // public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         ArchivosObjetos  ar = new ArchivosObjetos();
         
         
@@ -24,11 +24,11 @@ public class Main {
         //Bloque para Crear Clientes
 //                    ar.crearArchivo("src/clientes/clientes.obj");
 //                    Persona p = new Persona(18828200,"anthony","filgueira",26,"M","flaco",194,"moreno","negros","123","admin",true);
-//                    Persona p2 = new Persona(8887392,"diany","mendez",13,"F","flaca",194,"moreno","negros","123","cliente",true);
-//                    Persona p3 = new Persona(528551,"nidia","montano",12,"F","flaca",194,"moreno","negros","123","cliente",false);
+ //                   Persona p2 = new Persona(8887392,"diany","mendez",13,"F","flaca",194,"moreno","negros","123","cliente",true);
+ //                   Persona p3 = new Persona(528551,"nidia","montano",12,"F","flaca",194,"moreno","negros","123","cliente",false);
 //                    ar.escribrirArchivo("src/clientes/clientes.obj",p);
-//                    ar.escribrirArchivo("src/clientes/clientes.obj",p2);
-//                    ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
+  //                  ar.escribrirArchivo("src/clientes/clientes.obj",p2);
+ //                   ar.escribrirArchivo("src/clientes/clientes.obj",p3); 
         //Fin Bloque Crear Clientes
         
         //Bloque para Crear Citas
@@ -44,7 +44,7 @@ public class Main {
         //Fin Bloque Crear Citas
         
        
-//     Busqueda bs = new Busqueda();
+  //   Busqueda bs = new Busqueda();
        
 //       System.out.println("Iterando afuera con el  Vector");
 //  
@@ -86,20 +86,20 @@ public class Main {
 //     
 //Listado de Citas Con Preferencias
 //                        ArrayList<Cita> listado = new ArrayList<Cita>();
-//                           listado =  bs.buscarCita(ar.leerArchivo("src/citas/citas.obj"), new Cita(null,null,"","26/02/2015"));
+//                           listado =  bs.buscarCita(ar.leerArchivo("src/citas/citas.obj"), new Cita(null,null,"",""));
 //                               
 //                              Iterator<Cita> e = listado.iterator();
 //                               while( e.hasNext() ){
 //                                   Cita aux = e.next();
 //                                   System.out.println("*******Cita********");
-//                                   System.out.println("Pareja 1\n"+aux.getHombre());
-//                                   System.out.println("Pareja 2\n"+aux.getMujer());
+//                                   System.out.println("Pareja 1\n"+aux.getHombre().toString());
+//                                   System.out.println("Pareja 2\n"+aux.getMujer().toString());
 //                                   System.out.println("Lugar:"+aux.getLugar());
 //                                   System.out.println("Fecha:"+aux.getFecha());
 //                                   System.out.println("*******Fin********");
 //                               }
 //Fin listado de Citas
             
- //   }        
+   }        
 
 }

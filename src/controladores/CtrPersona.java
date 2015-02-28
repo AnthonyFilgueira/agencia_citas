@@ -14,10 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelos.Busqueda;
+import modelos.Cita;
 import modelos.Persona;
 import modelos.Utilidades;
 import vistas.VistaAdmin;
 import vistas.VistaCliente;
+import vistas.VistaPrincipal;
 
 
 
@@ -31,7 +33,8 @@ public class CtrPersona {
     public static boolean iniciarSesion(String rutaArchivo,int cedula, String password){
             Persona p;
             if(Busqueda.buscarUsuario(rutaArchivo,cedula,password)){
-                                    
+                 
+                  
                   p= Busqueda.getPersona(rutaArchivo,cedula);                 
                   
                 if(p.getTipo().contentEquals("admin")){
@@ -55,12 +58,12 @@ public class CtrPersona {
     }
     
     public static boolean crearCliente(String rutaArchivo,int cedula,String nombre,String apellido,int edad,String sexo,String contextura,float estatura, String colorPiel,String colorOjos,String password,String tipo,boolean casado){
-        Utilidades ut = new Utilidades();
+       
         if(Busqueda.buscarUsuario(rutaArchivo, cedula)){
         
             JOptionPane.showMessageDialog(null,"El Usuario ya Existe Ingresa Una Cedula Valida");
         }else{
-            ut.crearCliente(rutaArchivo, cedula, nombre, apellido, edad, sexo, contextura, estatura, colorPiel, colorOjos, password, tipo, casado);
+            Utilidades.crearCliente(rutaArchivo, cedula, nombre, apellido, edad, sexo, contextura, estatura, colorPiel, colorOjos, password, tipo, casado);
         return true;
         }
         return false;
@@ -104,4 +107,88 @@ tabla.setVisible(true);
 
 
 }
-    }
+   public static boolean crearCita(String rutaArchivoPersona,String rutaArchivoCita,int pareja,String lugar,String fecha){
+   if(rutaArchivoPersona.isEmpty()|| rutaArchivoCita.isEmpty()||pareja==0||lugar.isEmpty()||fecha.isEmpty()){
+   
+       return false;
+   } else{   
+   Persona p1 = new Persona(0,"","",0,"","",0,"","","","",false);
+   Persona p2 = new Persona(0,"","",0,"","",0,"","","","",false);
+   
+   p1 = Busqueda.getPersona(rutaArchivoPersona, VistaPrincipal.ced);
+   
+   
+   p2 = Busqueda.getPersona(rutaArchivoPersona, pareja);
+  
+   
+   Utilidades.crearCita(rutaArchivoCita, p1, p2, lugar, fecha);
+   return true;
+   }
+   } 
+
+   public static void listarCitasPersona(JTable tabla,JPanel panel,String rutaArchivoCitas){
+   
+    DefaultTableModel modelo = new DefaultTableModel();
+            tabla.setModel(modelo);
+            modelo.addColumn("Pareja");
+            modelo.addColumn("Pareja");
+            modelo.addColumn("Lugar");
+            modelo.addColumn("Fecha");
+            tabla.setVisible(true);
+                    ArrayList<Cita> listado = new ArrayList<Cita>();
+    
+    listado= Utilidades.getListaCitas(rutaArchivoCitas);
+    Object []object = new Object[4];
+    Iterator<Cita> e = listado.iterator();
+        while( e.hasNext() ){
+            Cita aux = e.next();
+            if(aux.getHombre().getCedula()==VistaPrincipal.ced||aux.getMujer().getCedula()==VistaPrincipal.ced){
+            object[0] = aux.getHombre().getNombre();
+            object[1] = aux.getMujer().getNombre(); 
+            object[2] = aux.getLugar(); 
+            object[3] = aux.getFecha();  
+           
+             
+            modelo.addRow(object); 
+            }
+        }
+ 
+panel.setVisible(true);
+tabla.setVisible(true);
+   }
+      public static void listarCitasAdmin(JTable tabla,JPanel panel,String rutaArchivoCitas){
+   
+    DefaultTableModel modelo = new DefaultTableModel();
+            tabla.setModel(modelo);
+            modelo.addColumn("Pareja");
+            modelo.addColumn("Pareja");
+            modelo.addColumn("Lugar");
+            modelo.addColumn("Fecha");
+            tabla.setVisible(true);
+                    ArrayList<Cita> listado = new ArrayList<Cita>();
+    
+    listado= Utilidades.getListaCitas(rutaArchivoCitas);
+    Object []object = new Object[4];
+    Iterator<Cita> e = listado.iterator();
+        while( e.hasNext() ){
+            Cita aux = e.next();
+            
+            object[0] = aux.getHombre().getNombre();
+            object[1] = aux.getMujer().getNombre(); 
+            object[2] = aux.getLugar(); 
+            object[3] = aux.getFecha();  
+           
+             
+            modelo.addRow(object); 
+            
+        }
+ 
+panel.setVisible(true);
+tabla.setVisible(true);
+   }
+      
+      public static void actualizarPerfil(Persona persona){
+      
+      Utilidades.actualizarPersona(persona);
+      }
+}

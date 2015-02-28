@@ -6,6 +6,9 @@
 
 package vistas;
 
+import controladores.CtrPersona;
+import modelos.Utilidades;
+
 /**
  *
  * @author afilgueira
@@ -15,11 +18,23 @@ public class VistaHistorialCita extends javax.swing.JFrame {
     /**
      * Creates new form vistaCita
      */
-    public VistaHistorialCita() {
+    public VistaHistorialCita(int opc) {
+        
+        if(opc==1){
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("AGENCIA DE CITAS");
+         CtrPersona.listarCitasPersona(tabla, panel, "src/citas/citas.obj");
+        }
+        else if(opc==2){
+         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("AGENCIA DE CITAS");
+         CtrPersona.listarCitasAdmin(tabla, panel, "src/citas/citas.obj");
+        }
+        
     }
 
     /**
@@ -31,49 +46,15 @@ public class VistaHistorialCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        tabla = new javax.swing.JTable();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Hombre", "Mujer", "Fecha", "Lugar"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        panel.setBackground(new java.awt.Color(0, 204, 204));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 1206, 372, 279));
-
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -84,19 +65,11 @@ public class VistaHistorialCita extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tabla);
 
-        jPanel1.add(jScrollPane2);
+        panel.add(jScrollPane2);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 460));
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,19 +104,14 @@ public class VistaHistorialCita extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaHistorialCita().setVisible(true);
+                new VistaHistorialCita(0).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JPanel panel;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -98,6 +98,35 @@ public class VistaPersona extends javax.swing.JFrame {
                 cedulaActionPerformed(evt);
             }
         });
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
+            }
+        });
+
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
+            }
+        });
+
+        apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellidoKeyTyped(evt);
+            }
+        });
+
+        edad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edadKeyTyped(evt);
+            }
+        });
+
+        estatura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                estaturaKeyTyped(evt);
+            }
+        });
 
         registrarCliente.setText("GUARDAR");
         registrarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -425,6 +454,27 @@ public class VistaPersona extends javax.swing.JFrame {
 //        System.out.println(""+tipo.getSelectedIndex());
 //        System.out.println(""+casado.isSelected());
     }//GEN-LAST:event_registrarClienteActionPerformed
+
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+     Utilidades.validarNumeros(evt,1);
+    }//GEN-LAST:event_cedulaKeyTyped
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+     Utilidades.validarLetras(evt);
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoKeyTyped
+      Utilidades.validarLetras(evt);
+    }//GEN-LAST:event_apellidoKeyTyped
+
+    private void edadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edadKeyTyped
+        Utilidades.validarNumeros(evt,1);
+    }//GEN-LAST:event_edadKeyTyped
+
+    private void estaturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_estaturaKeyTyped
+        
+        Utilidades.validarNumeros(evt,2);
+    }//GEN-LAST:event_estaturaKeyTyped
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,8 @@
 
 package modelos;
 
+import java.awt.Event;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -122,8 +124,23 @@ public class Utilidades {
     
         return list;
     }
+     public static ArrayList<Cita> getListaCitas(String rutaArchivo){
+         ArchivosObjetos ao = new ArchivosObjetos();
+        ArrayList<Cita> list = null;
+        try {
+            
+            
+           list = ao.leerArchivo(rutaArchivo); 
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
     
-    public void crearCliente(String rutaArchivo,int cedula,String nombre,String apellido,int edad,String sexo,String contextura,float estatura, String colorPiel,String colorOjos,String password,String tipo,boolean casado){
+        return list;
+    }
+    
+    public static void crearCliente(String rutaArchivo,int cedula,String nombre,String apellido,int edad,String sexo,String contextura,float estatura, String colorPiel,String colorOjos,String password,String tipo,boolean casado){
     
         Persona p = new Persona(cedula,nombre,apellido,edad,sexo,contextura,estatura,colorPiel,colorOjos,password,tipo,casado);
         
@@ -131,6 +148,30 @@ public class Utilidades {
         
         ao.escribrirArchivo(rutaArchivo, p);
         
+    
+    }
+    public static void validarNumeros(KeyEvent e,int opc){
+        char c =e.getKeyChar();
+        if(opc==1){
+    
+            if(c<'0'||c>'9'){
+                e.consume();
+            }}
+        else if(opc==2){
+            if((c<'0'||c>'9')&&(c!='.')){
+                e.consume();
+            
+            }}
+            
+        
+    }
+    public static void validarLetras(KeyEvent e){
+    
+    char c =e.getKeyChar();
+    
+        if((c<'a'||c>'z') && ((c<'A'||c>'Z'))){
+        e.consume();
+        }
     
     }
     

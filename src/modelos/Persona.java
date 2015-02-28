@@ -40,7 +40,7 @@ public class Persona implements Serializable{
         this.tipo = tipo;
         this.casado = casado;
     }
-
+  
     /**
      * @return the nombre
      */
