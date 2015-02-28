@@ -49,8 +49,10 @@ public class Busqueda {
             while( e.hasNext() ){
                 Persona aux = e.next();
                 
-                if (aux.getNombre().toLowerCase().contentEquals(elem.getNombre().toLowerCase())||
-                        aux.getApellido().toLowerCase().contentEquals(elem.getApellido().toLowerCase())||
+                if (    aux.getColorOjos().toLowerCase().contentEquals(elem.getColorOjos().toLowerCase())||
+                        aux.getColorPiel().toLowerCase().contentEquals(elem.getColorPiel().toLowerCase())||
+                        aux.getEstatura()==elem.getEstatura()||
+                        aux.getContextura().toLowerCase().contentEquals(elem.getContextura().toLowerCase())||
                         aux.getEdad()==elem.getEdad()||
                         aux.getSexo().toLowerCase().contentEquals(elem.getSexo().toLowerCase())) {
                     

@@ -6,12 +6,7 @@
 
 package vistas;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import modelos.Busqueda;
-import modelos.Persona;
+import controladores.CtrPersona;
 
 /**
  *
@@ -19,7 +14,7 @@ import modelos.Persona;
  */
 public class VistaCita extends javax.swing.JFrame {
 
-    DefaultTableModel modelo;
+   
     /**
      * Creates new form VistaCita
      */
@@ -47,7 +42,7 @@ public class VistaCita extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        contextura = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
@@ -55,14 +50,14 @@ public class VistaCita extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        edad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        estatura = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        piel = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox();
-        jButton2 = new javax.swing.JButton();
+        ojos = new javax.swing.JComboBox();
+        buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1100, 585));
@@ -122,7 +117,7 @@ public class VistaCita extends javax.swing.JFrame {
 
         sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Masculino", "Femenino" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Delgad(@)", "Atletic(@)", "Rellenit(@)" }));
+        contextura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Delgad(@)", "Atletic(@)", "Rellenit(@)" }));
 
         jLabel3.setFont(new java.awt.Font("Shruti", 0, 14)); // NOI18N
         jLabel3.setText("Edad:");
@@ -148,22 +143,17 @@ public class VistaCita extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Shruti", 0, 14)); // NOI18N
         jLabel5.setText("Piel:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Moren(@)", "Blanc(@)", "Negr(@)" }));
+        piel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Moren(@)", "Blanc(@)", "Negr(@)" }));
 
         jLabel6.setFont(new java.awt.Font("Shruti", 0, 14)); // NOI18N
         jLabel6.setText("Ojos:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Grises", "Azules", "Negros" }));
+        ojos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Grises", "Azules", "Negros" }));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonBuscar.png"))); // NOI18N
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonBuscar.png"))); // NOI18N
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
@@ -187,7 +177,7 @@ public class VistaCita extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(contextura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
@@ -200,25 +190,25 @@ public class VistaCita extends javax.swing.JFrame {
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(estatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(piel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ojos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(391, 391, 391))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(jButton1)))
@@ -234,19 +224,19 @@ public class VistaCita extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contextura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ojos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,13 +260,91 @@ public class VistaCita extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseClicked
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+    String sex=null,contex=null,cp=null,co=null;
+    int ed;
+    float est;
+       if(edad.getText().isEmpty()){
+       
+       edad.setText("0");
+       }
+       if(estatura.getText().isEmpty()){
+       estatura.setText("0");
+       }
+        
+        switch(sexo.getSelectedIndex()){
+                  case 0:{
+                  sex = "";
+                  break;
+                  }
+                  case 1:{
+                  sex = "masculino";
+                  break;
+                  }
+                  case 2:{
+                  sex = "femenino";
+                  break;
+                  }
+              }
+              switch(contextura.getSelectedIndex()){
+                  case 0:{
+                  contex = "";
+                  break;
+                  }
+                  case 1:{
+                  contex = "delgado";
+                  break;
+                  }
+                  case 2:{
+                  contex = "atletico";
+                  break;
+                  }
+                  case 3:{
+                  contex = "relleno";
+                  break;
+                  }
+              }
+              switch(piel.getSelectedIndex()){
+                  case 0:{
+                  cp = "";
+                  break;
+                  }
+                  case 1:{
+                  cp = "moreno";
+                  break;
+                  }
+                  case 2:{
+                  cp = "blanco";
+                  break;
+                  }
+                  case 3:{
+                  cp = "negro";
+                  break;
+                  }
+              }
+              switch(ojos.getSelectedIndex()){
+                  case 0:{
+                  co = "";
+                  break;
+                  }
+                  case 1:{
+                  co = "gris";
+                  break;
+                  }
+                  case 2:{
+                  co = "azul";
+                  break;
+                  }
+                  case 3:{
+                  co = "negro";
+                  break;
+                  }
+              }
+            
+              
+       CtrPersona.BuscarPersonas(tabla, jPanel1, sex,contex,Integer.parseInt(edad.getText()),Float.parseFloat(estatura.getText()),cp,co);
+     //JTable tabla,JPanel panel,String sexo,String contextura,int edad,float estatura,String piel,String ojos)   
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,50 +381,12 @@ public class VistaCita extends javax.swing.JFrame {
             }
         });
     }
-public void llenarTabla(String sexo){
-     modelo = new DefaultTableModel();
-            tabla.setModel(modelo);
-            modelo.addColumn("cedula");
-            modelo.addColumn("nombre");
-            modelo.addColumn("apellido");
-            modelo.addColumn("edad");
-            modelo.addColumn("sexo");
-            modelo.addColumn("contextura");
-            modelo.addColumn("estatura");
-            modelo.addColumn("ojos");
-            modelo.addColumn("piel");
-            tabla.setVisible(true);
-    ArrayList<Persona> listado = new ArrayList<Persona>();
-    Persona p = new Persona(0,"","",0,sexo,"",0,"","","","",false);
-    listado=Busqueda.buscarPersonas("src/clientes/clientes.obj", p);
-    Object []object = new Object[9];
-    Iterator<Persona> e = listado.iterator();
-        while( e.hasNext() ){
-            Persona aux = e.next();
-            object[0] = aux.getCedula();
-            object[1] = aux.getNombre(); 
-            object[2] = aux.getApellido(); 
-            object[3] = aux.getEdad();  
-            object[4] = aux.getSexo();  
-            object[5] = aux.getContextura(); 
-            object[6] = aux.getEstatura(); 
-            object[7] = aux.getColorOjos();  
-            object[8] = aux.getColorPiel();
-             
-            modelo.addRow(object);        
-        }
- 
-jPanel1.setVisible(true);
-tabla.setVisible(true);
-
-
-}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
+    private javax.swing.JComboBox contextura;
+    private javax.swing.JTextField edad;
+    private javax.swing.JTextField estatura;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -369,9 +399,9 @@ tabla.setVisible(true);
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox ojos;
+    private javax.swing.JComboBox piel;
     private javax.swing.JComboBox sexo;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables

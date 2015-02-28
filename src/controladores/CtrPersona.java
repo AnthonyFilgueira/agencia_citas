@@ -6,7 +6,13 @@
 
 package controladores;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import modelos.Busqueda;
 import modelos.Persona;
 import modelos.Utilidades;
@@ -60,4 +66,42 @@ public class CtrPersona {
         return false;
     }
     
+    public static void BuscarPersonas(JTable tabla,JPanel panel,String sexo,String contextura,int edad,float estatura,String piel,String ojos){
+    DefaultTableModel modelo = new DefaultTableModel();
+            tabla.setModel(modelo);
+            modelo.addColumn("cedula");
+            modelo.addColumn("nombre");
+            modelo.addColumn("apellido");
+            modelo.addColumn("edad");
+            modelo.addColumn("sexo");
+            modelo.addColumn("contextura");
+            modelo.addColumn("estatura");
+            modelo.addColumn("ojos");
+            modelo.addColumn("piel");
+            tabla.setVisible(true);
+    ArrayList<Persona> listado = new ArrayList<Persona>();
+    Persona p = new Persona(0,"","",edad,sexo,contextura,estatura,piel,ojos,"","",false);
+    listado=Busqueda.buscarPersonas("src/clientes/clientes.obj", p);
+    Object []object = new Object[9];
+    Iterator<Persona> e = listado.iterator();
+        while( e.hasNext() ){
+            Persona aux = e.next();
+            object[0] = aux.getCedula();
+            object[1] = aux.getNombre(); 
+            object[2] = aux.getApellido(); 
+            object[3] = aux.getEdad();  
+            object[4] = aux.getSexo();  
+            object[5] = aux.getContextura(); 
+            object[6] = aux.getEstatura(); 
+            object[7] = aux.getColorOjos();  
+            object[8] = aux.getColorPiel();
+             
+            modelo.addRow(object);        
+        }
+ 
+panel.setVisible(true);
+tabla.setVisible(true);
+
+
 }
+    }
