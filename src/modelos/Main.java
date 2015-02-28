@@ -15,7 +15,7 @@ import java.util.Iterator;
  * @author afilgueira
  */
 public class Main {
-    public static void main(String[] args) throws IOException {
+   // public static void main(String[] args) throws IOException {
         ArchivosObjetos  ar = new ArchivosObjetos();
         
         
@@ -100,6 +100,6 @@ public class Main {
 //                               }
 //Fin listado de Citas
             
-    }        
+ //   }        
 
 }
