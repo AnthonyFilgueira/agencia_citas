@@ -6,6 +6,8 @@
 
 package vistas;
 
+import controladores.CtrPersona;
+
 /**
  *
  * @author afilgueira
@@ -20,7 +22,10 @@ public class VistaHistorialMatrimonio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("AGENCIA DE CITAS");
+        jPanel1.setVisible(false);
+        CtrPersona.listarMatrimonios(jTable1, jPanel1, "src/matrimonios/matrimonios.obj");
     }
+       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,9 +39,6 @@ public class VistaHistorialMatrimonio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -70,14 +72,6 @@ public class VistaHistorialMatrimonio extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 470));
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,9 +112,6 @@ public class VistaHistorialMatrimonio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

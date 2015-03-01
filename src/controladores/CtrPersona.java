@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelos.Busqueda;
 import modelos.Cita;
+import modelos.Matrimonio;
 import modelos.Persona;
 import modelos.Utilidades;
 import vistas.VistaAdmin;
@@ -108,21 +109,21 @@ tabla.setVisible(true);
 
 }
    public static boolean crearCita(String rutaArchivoPersona,String rutaArchivoCita,int pareja,String lugar,String fecha){
-   if(rutaArchivoPersona.isEmpty()|| rutaArchivoCita.isEmpty()||pareja==0||lugar.isEmpty()||fecha.isEmpty()){
+        if(rutaArchivoPersona.isEmpty()|| rutaArchivoCita.isEmpty()||pareja==0||lugar.isEmpty()||fecha.isEmpty()){
    
-       return false;
-   } else{   
-   Persona p1 = new Persona(0,"","",0,"","",0,"","","","",false);
-   Persona p2 = new Persona(0,"","",0,"","",0,"","","","",false);
+            return false;
+        } else{   
+        Persona p1 = new Persona(0,"","",0,"","",0,"","","","",false);
+        Persona p2 = new Persona(0,"","",0,"","",0,"","","","",false);
    
-   p1 = Busqueda.getPersona(rutaArchivoPersona, VistaPrincipal.ced);
+        p1 = Busqueda.getPersona(rutaArchivoPersona, VistaPrincipal.ced);
    
    
-   p2 = Busqueda.getPersona(rutaArchivoPersona, pareja);
+        p2 = Busqueda.getPersona(rutaArchivoPersona, pareja);
   
    
-   Utilidades.crearCita(rutaArchivoCita, p1, p2, lugar, fecha);
-   return true;
+        Utilidades.crearCita(rutaArchivoCita, p1, p2, lugar, fecha);
+        return true;
    }
    } 
 
@@ -158,37 +159,81 @@ tabla.setVisible(true);
    }
       public static void listarCitasAdmin(JTable tabla,JPanel panel,String rutaArchivoCitas){
    
-    DefaultTableModel modelo = new DefaultTableModel();
-            tabla.setModel(modelo);
-            modelo.addColumn("Pareja");
-            modelo.addColumn("Pareja");
-            modelo.addColumn("Lugar");
-            modelo.addColumn("Fecha");
-            tabla.setVisible(true);
-                    ArrayList<Cita> listado = new ArrayList<Cita>();
-    
-    listado= Utilidades.getListaCitas(rutaArchivoCitas);
-    Object []object = new Object[4];
-    Iterator<Cita> e = listado.iterator();
-        while( e.hasNext() ){
-            Cita aux = e.next();
-            
-            object[0] = aux.getHombre().getNombre();
-            object[1] = aux.getMujer().getNombre(); 
-            object[2] = aux.getLugar(); 
-            object[3] = aux.getFecha();  
-           
-             
-            modelo.addRow(object); 
-            
-        }
- 
-panel.setVisible(true);
-tabla.setVisible(true);
+            DefaultTableModel modelo = new DefaultTableModel();
+                    tabla.setModel(modelo);
+                    modelo.addColumn("Pareja");
+                    modelo.addColumn("Pareja");
+                    modelo.addColumn("Lugar");
+                    modelo.addColumn("Fecha");
+                    tabla.setVisible(true);
+                            ArrayList<Cita> listado = new ArrayList<Cita>();
+
+            listado= Utilidades.getListaCitas(rutaArchivoCitas);
+            Object []object = new Object[4];
+            Iterator<Cita> e = listado.iterator();
+                while( e.hasNext() ){
+                    Cita aux = e.next();
+
+                    object[0] = aux.getHombre().getNombre();
+                    object[1] = aux.getMujer().getNombre(); 
+                    object[2] = aux.getLugar(); 
+                    object[3] = aux.getFecha();  
+
+
+                    modelo.addRow(object); 
+
+                }
+
+        panel.setVisible(true);
+        tabla.setVisible(true);
    }
       
       public static void actualizarPerfil(Persona persona){
       
       Utilidades.actualizarPersona(persona);
       }
+
+
+    public static void crearMatrimonio(String rutaArchivoPersona,String rutaArchivoMatrimonio,int pareja1,int pareja2){
+    
+     Persona p1;
+     Persona p2;
+     p1 = Busqueda.getPersona(rutaArchivoPersona, pareja1);
+     p2 = Busqueda.getPersona(rutaArchivoPersona, pareja2);
+     p1.setCasado(true);
+     p2.setCasado(true);
+     
+     Utilidades.actualizarPersona(p2);
+     Utilidades.crearMatrimonio(rutaArchivoMatrimonio, p1, p2);
+    }
+    public static void listarMatrimonios(JTable tabla,JPanel panel,String rutaArchivoMatrimonios){
+      
+        DefaultTableModel modelo = new DefaultTableModel();
+                    tabla.setModel(modelo);
+                    modelo.addColumn("Pareja");
+                    modelo.addColumn("Pareja");
+                    
+                    tabla.setVisible(true);
+                            ArrayList<Matrimonio> listado = new ArrayList<Matrimonio>();
+
+            listado= Utilidades.getListaMatrimonios(rutaArchivoMatrimonios);
+            Object []object = new Object[2];
+            Iterator<Matrimonio> e = listado.iterator();
+                while( e.hasNext() ){
+                    Matrimonio aux = e.next();
+
+                    object[0] = aux.getPareja1().getNombre();
+                    object[1] = aux.getPareja2().getNombre(); 
+                  
+
+
+                    modelo.addRow(object); 
+
+                }
+
+        panel.setVisible(true);
+        tabla.setVisible(true);
+    
+    
+    }
 }

@@ -174,5 +174,46 @@ public class Utilidades {
         }
     
     }
+    public static void crearMatrimonio(String rutaArchivo,Persona pareja1,Persona pareja2){
     
+        ArchivosObjetos  ar = new ArchivosObjetos();
+        
+        Matrimonio matrimonio = new Matrimonio(pareja1,pareja2);
+        
+        ar.escribrirArchivo(rutaArchivo, matrimonio);
+    }
+    
+    public static void imprimirListaMatrimonios(){
+        ArchivosObjetos ao = new ArchivosObjetos();
+        
+        try {
+           ArrayList<Matrimonio> lista = (ArrayList<Matrimonio>) ao.leerArchivo("src/matrimonios/matrimonios.obj");
+           Iterator<Matrimonio> e = lista.iterator();
+               while( e.hasNext() ){
+                   Matrimonio aux = e.next();
+                   System.out.println("*********Inicio**********");
+                   System.out.println("Pareja1:"+aux.getPareja1().getNombre()+" Estado Civil"+aux.getPareja1().isCasado());
+                   System.out.println("Pareja2:"+aux.getPareja2().getNombre()+" Estado Civil"+aux.getPareja2().isCasado());
+                   System.out.println("***********Fin************");
+               }
+           
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+    public static ArrayList<Matrimonio> getListaMatrimonios(String rutaArchivoMatrimonios){
+        ArchivosObjetos ao = new ArchivosObjetos();
+        ArrayList<Matrimonio> list = null;
+        try {
+            
+            
+           list = ao.leerArchivo(rutaArchivoMatrimonios); 
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    
+        return list;
+    }
 }
